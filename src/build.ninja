@@ -1,0 +1,11 @@
+rule cc
+  command = gcc -c -o $out $in
+  description = CC $out
+ 
+rule link
+  command = gcc -o $out $in
+  description = LINK $out
+ 
+build main.o: cc main.c
+#build calc.o: cc calc.h
+build program: link main.o 

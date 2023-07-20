@@ -1,13 +1,10 @@
-# Makefile
+nome = calc
+all: $(nome).o
+	g++ $(nome).o main.cpp -o test.exe
+	rm -rf *.o
 
-# Linka códigos-objeto (cria executável main)
-all: main.o 
-	gcc -o program.exe main.c -lm
+%.o: %.asm
+	nasm -f elf64 $<
 
-# Remove executável e códigos-objeto
 clean:
-	rm -f main *.o
-
-clean_all: 
-	rm -f main *.o
-	rm -rf *.exe
+	rm -rf *.o *.exe
